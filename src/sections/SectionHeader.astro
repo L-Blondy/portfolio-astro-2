@@ -1,0 +1,25 @@
+<div class="flex items-center h-12">
+   <h2
+      class="flex gap-1 xs:gap-2.5 items-baseline font-black whitespace-nowrap capitalize"
+   >
+      <slot />
+   </h2>
+   <div class="h-px ml-2.5 bg-primary self-center flex-1"></div>
+</div>
+<style>
+   :root {
+      counter-reset: section;
+   }
+
+   h2 {
+      font-size: clamp(22px, 5vw, 32px);
+   }
+
+   h2::before {
+      counter-increment: section;
+      content: '0' counter(section) '. ';
+      font-size: clamp(16px, 3vw, 20px);
+      font-weight: 500;
+      @apply font-mono transform -translate-y-0.5 text-primary;
+   }
+</style>

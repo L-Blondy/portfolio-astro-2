@@ -100,7 +100,7 @@ module.exports = {
                '--base-content-focus': '174 100% 98%',
                'base-content': '#c2cdd0',
                // 'base-100': '#02454f',
-               'base-100': 'hsl(182 100% 19%)',
+               'base-100': 'hsl(182 100% 18%)',
                primary: 'gold',
                // primary: 'orange',
                // primary: 'turquoise',

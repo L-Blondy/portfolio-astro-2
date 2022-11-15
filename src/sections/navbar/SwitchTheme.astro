@@ -1,0 +1,53 @@
+---
+import IconMoon from 'src/icons/iconMoon.astro';
+import IconSun from 'src/icons/IconSun.astro';
+---
+
+<label>
+   <input
+      name="theme"
+      id="theme"
+      type="checkbox"
+      onchange="document.documentElement.dataset.theme=this.checked?'light':'halloween'"
+      checked
+      hidden
+   />
+
+   <IconMoon class="text-primary opacity-20" />
+   <IconMoon class="icon-dark" />
+
+   <IconSun class="ml-auto text-primary opacity-20 scale-90" />
+   <IconSun class="icon-light" />
+</label>
+
+<style>
+   label {
+      --duration: 300ms;
+      transition: color var(--duration);
+      @apply flex w-12 h-5 relative rounded-full text-primary bg-base-100 outline outline-4 -outline-offset-1 outline-base-100;
+      box-shadow: 0 0 0 4.5px hsl(var(--p));
+   }
+
+   .icon-dark,
+   .icon-light {
+      transition-property: transform, left, right;
+      transition-duration: var(--duration);
+      @apply absolute;
+   }
+
+   .icon-dark {
+      @apply left-0 scale-110;
+   }
+
+   .icon-light {
+      @apply right-0;
+   }
+
+   input:checked ~ .icon-dark {
+      @apply left-full -translate-x-full rotate-180 opacity-0;
+   }
+
+   input:not(:checked) ~ .icon-light {
+      @apply right-full translate-x-full -rotate-180 opacity-0;
+   }
+</style>

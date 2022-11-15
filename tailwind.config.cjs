@@ -43,7 +43,29 @@ module.exports = {
    },
 
    daisyui: {
-      themes: ['light', 'dark'],
+      themes: [
+         {
+            light: {
+               ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+               // primary: 'lightseagreen',
+               // primary: 'mediumturquoise',
+               primary: 'steelblue',
+               // primary: 'teal',
+            },
+         },
+         {
+            halloween: {
+               ...require('daisyui/src/colors/themes')[
+                  '[data-theme=halloween]'
+               ],
+               // primary: 'lawngreen',
+               // primary: 'orange',
+               primary: 'paleturquoise',
+               // primary: 'turquoise',
+               // primary: 'yellow',
+            },
+         },
+      ],
    },
    plugins: [require('daisyui')],
 };

@@ -7,7 +7,11 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="light" class="font-sans overflow-x-hidden">
+<html
+   lang="en"
+   data-theme="light"
+   class="font-sans overflow-x-hidden bg-base-100"
+>
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width" />
@@ -29,9 +33,27 @@ const { title } = Astro.props;
             text-transform: initial;
             font-weight: 500;
             border-radius: 4px;
-            padding-left: 1.5625rem;
-            padding-right: 1.5625rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
             height: 3.25rem;
+         }
+
+         .btn-circle {
+            border-radius: 100px;
+         }
+
+         [data-theme='light'] .btn {
+            border-width: 2px;
+         }
+
+         .btn:hover {
+            @apply bg-primary bg-opacity-10 text-primary border-primary;
+         }
+
+         .toggle:checked {
+            box-shadow: inset 1.5rem 0 0 2px hsl(var(--p)),
+               inset 0 0 0 2px hsl(var(--p));
+            border-color: hsl(var(--p));
          }
 
          @media (min-width: 480px) {

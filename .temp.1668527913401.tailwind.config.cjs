@@ -79,29 +79,16 @@ module.exports = {
             },
          },
          {
-            darkTurquoise: {
+            halloween: {
                ...require('daisyui/src/colors/themes')[
                   '[data-theme=halloween]'
                ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               'base-100': '#001515',
-               primary: 'hsl(174 75% 65%)',
-               // primary: 'orange',
-               // primary: 'turquoise',
-               // primary: 'gold',
-            },
-         },
-         {
-            darkGold: {
-               ...require('daisyui/src/colors/themes')[
-                  '[data-theme=halloween]'
-               ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               // 'base-100': '#02454f',
-               'base-100': 'hsl(182 100% 19%)',
-               primary: 'gold',
+               'base-100': '#001929',
+               '--base-content-focus': '0 0% 90%',
+               'base-content': #d0d0d020,
+               primary: 'paleturquoise',
+               // 'base-100': '#000d14',
+               // primary: 'lawngreen',
                // primary: 'orange',
                // primary: 'turquoise',
                // primary: 'gold',

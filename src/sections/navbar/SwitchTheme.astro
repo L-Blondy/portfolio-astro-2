@@ -1,22 +1,25 @@
 ---
+import { HTMLAttributes } from 'astro/types';
 import IconMoon from 'src/icons/iconMoon.astro';
 import IconSun from 'src/icons/IconSun.astro';
+
+export interface Props extends HTMLAttributes<'label'> {}
 ---
 
-<label>
+<label {...Astro.props}>
    <input
       name="theme"
       id="theme"
       type="checkbox"
-      onchange="document.documentElement.dataset.theme=this.checked?'light':'halloween'"
+      onchange="document.documentElement.dataset.theme=this.checked?'light':'darkGold'"
       checked
       hidden
    />
 
-   <IconMoon class="text-primary opacity-20" />
+   <IconMoon class="opacity-20" />
    <IconMoon class="icon-dark" />
 
-   <IconSun class="ml-auto text-primary opacity-20 scale-90" />
+   <IconSun class="ml-auto opacity-20 scale-90" />
    <IconSun class="icon-light" />
 </label>
 
@@ -24,8 +27,18 @@ import IconSun from 'src/icons/IconSun.astro';
    label {
       --duration: 300ms;
       transition: color var(--duration);
-      @apply flex w-12 h-5 relative rounded-full text-primary bg-base-100 outline outline-4 -outline-offset-1 outline-base-100;
-      box-shadow: 0 0 0 4.5px hsl(var(--p));
+      @apply flex 
+         w-12
+         h-5
+         relative 
+         rounded-full
+         bg-base-100
+         outline
+         outline-4
+         -outline-offset-1
+         outline-base-100
+         cursor-pointer;
+      box-shadow: 0 0 0 4.5px currentColor;
    }
 
    .icon-dark,

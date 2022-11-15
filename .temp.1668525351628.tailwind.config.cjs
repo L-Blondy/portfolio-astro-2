@@ -16,7 +16,7 @@ function pixelToNumber(pixelValue) {
 }
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports {
    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
    theme: {
       extend: {
@@ -79,32 +79,16 @@ module.exports = {
             },
          },
          {
-            darkTurquoise: {
+            halloween: {
                ...require('daisyui/src/colors/themes')[
                   '[data-theme=halloween]'
                ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               'base-100': '#001515',
-               primary: 'hsl(174 75% 65%)',
+               '--base-content-focus': '0 100% 100%',
+               primary: 'paleturquoise',
                // primary: 'orange',
+               // primary: 'lawngreen',
                // primary: 'turquoise',
-               // primary: 'gold',
-            },
-         },
-         {
-            darkGold: {
-               ...require('daisyui/src/colors/themes')[
-                  '[data-theme=halloween]'
-               ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               // 'base-100': '#02454f',
-               'base-100': 'hsl(182 100% 19%)',
-               primary: 'gold',
-               // primary: 'orange',
-               // primary: 'turquoise',
-               // primary: 'gold',
+               // primary: 'yellow',
             },
          },
       ],
@@ -165,3 +149,4 @@ module.exports = {
       }),
    ],
 };
+

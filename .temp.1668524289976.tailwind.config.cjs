@@ -1,7 +1,6 @@
-/* cSpell:disable */
 const plugin = require('tailwindcss/plugin');
 
-// Handles the opacity of color
+// this function handles the opacity of color
 function withOpacityValue(variable) {
    return ({ opacityValue }) => {
       if (opacityValue === undefined) {
@@ -9,10 +8,6 @@ function withOpacityValue(variable) {
       }
       return `hsl(var(${variable}) / ${opacityValue})`;
    };
-}
-
-function pixelToNumber(pixelValue) {
-   return +pixelValue.replace('px', '');
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -79,68 +74,35 @@ module.exports = {
             },
          },
          {
-            darkTurquoise: {
+            halloween: {
                ...require('daisyui/src/colors/themes')[
                   '[data-theme=halloween]'
                ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               'base-100': '#001515',
-               primary: 'hsl(174 75% 65%)',
+               '--base-content-focus': '0 100% 100%',
+               primary: 'paleturquoise',
                // primary: 'orange',
+               // primary: 'lawngreen',
                // primary: 'turquoise',
-               // primary: 'gold',
-            },
-         },
-         {
-            darkGold: {
-               ...require('daisyui/src/colors/themes')[
-                  '[data-theme=halloween]'
-               ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               // 'base-100': '#02454f',
-               'base-100': 'hsl(182 100% 19%)',
-               primary: 'gold',
-               // primary: 'orange',
-               // primary: 'turquoise',
-               // primary: 'gold',
+               // primary: 'yellow',
             },
          },
       ],
    },
    plugins: [
       require('daisyui'),
-      plugin(({ addUtilities, addComponents, addBase, theme }) => {
-         /**
-          * Container max-width for SM screen = 100%
-          */
-         addComponents({
-            [`@media (min-width: ${theme('screens.xs')}) and (max-width: ${
-               pixelToNumber(theme('screens.sm')) - 0.1
-            }px)`]: {
-               '.container': {
-                  maxWidth: '100% !important',
-               },
-            },
-         });
-
-         /**
-          * Animations
-          */
+      plugin(({ addUtilities,addBase }) => {
          addBase({
-            '@keyframes slide-in-bottom': {
+            "@keyframes slide-in-bottom": {
                from: {
                   opacity: 0,
                   transform: 'translateY(50px)',
-               },
+               }
                to: {
                   opacity: 1,
-                  transform: 'translateY(0)',
-               },
-            },
-         });
-
+                  transform: 'translateY(0)';
+               }
+            }
+         })
          addUtilities({
             '.animation-duration-75': { animationDuration: '75ms' },
             '.animation-duration-100': { animationDuration: '100ms' },
@@ -151,7 +113,6 @@ module.exports = {
             '.animation-duration-700': { animationDuration: '700ms' },
             '.animation-duration-1000': { animationDuration: '1000ms' },
          });
-
          addUtilities({
             '.animation-delay-75': { animationDelay: '75ms' },
             '.animation-delay-100': { animationDelay: '100ms' },

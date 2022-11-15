@@ -12,7 +12,7 @@ const { title } = Astro.props;
 <html
    lang="en"
    data-theme="light"
-   class="font-sans overflow-x-hidden bg-base-100 transition-colors duration-300"
+   class="font-sans overflow-x-hidden bg-base-100 text-base-content transition-colors duration-300"
 >
    <head>
       <meta charset="UTF-8" />
@@ -33,20 +33,20 @@ const { title } = Astro.props;
       <AttachOnVisibleListener />
 
       <style is:global>
-         .btn {
+         /* .btn {
             text-transform: initial;
             font-weight: 500;
             border-radius: 4px;
             padding-left: 1.5rem;
             padding-right: 1.5rem;
             height: 3.25rem;
-         }
+         } */
 
          .btn-circle {
             border-radius: 100px;
          }
 
-         [data-theme='light'] .btn {
+         [data-theme='light'] .btn-outlined {
             border-width: 2px;
          }
 

@@ -1,15 +1,6 @@
 /* cSpell:disable */
+const colorTheme = require('./src/lib/colorTheme.cjs');
 const plugin = require('tailwindcss/plugin');
-
-// Handles the opacity of color
-function withOpacityValue(variable) {
-   return ({ opacityValue }) => {
-      if (opacityValue === undefined) {
-         return `hsl(var(${variable}))`;
-      }
-      return `hsl(var(${variable}) / ${opacityValue})`;
-   };
-}
 
 function pixelToNumber(pixelValue) {
    return +pixelValue.replace('px', '');
@@ -22,9 +13,6 @@ module.exports = {
       extend: {
          screens: {
             xs: '480px',
-         },
-         colors: {
-            'base-content-focus': withOpacityValue('--base-content-focus'),
          },
          animation: {
             'slide-in-bottom': 'slide-in-bottom 500ms forwards',
@@ -64,57 +52,86 @@ module.exports = {
          ],
       },
    },
-
-   daisyui: {
-      themes: [
-         {
-            light: {
-               ...require('daisyui/src/colors/themes')['[data-theme=light]'],
-               '--base-content-focus': '207 16% 15%',
-               '--bc': '207 12% 35%',
-               primary: 'steelblue',
-               // primary: 'lightseagreen',
-               // primary: 'mediumturquoise',
-               // primary: 'teal',
-            },
-         },
-         {
-            darkTurquoise: {
-               ...require('daisyui/src/colors/themes')[
-                  '[data-theme=halloween]'
-               ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               'base-100': '#001515',
-               primary: 'hsl(174 75% 65%)',
-               // primary: 'orange',
-               // primary: 'turquoise',
-               // primary: 'gold',
-            },
-         },
-         {
-            darkGold: {
-               ...require('daisyui/src/colors/themes')[
-                  '[data-theme=halloween]'
-               ],
-               '--base-content-focus': '174 100% 98%',
-               'base-content': '#c2cdd0',
-               // 'base-100': '#02454f',
-               'base-100': 'hsl(182 100% 17%)',
-               primary: 'gold',
-               // primary: 'orange',
-               // primary: 'turquoise',
-               // primary: 'gold',
-            },
-         },
-      ],
-   },
    plugins: [
-      require('daisyui'),
-      plugin(({ addUtilities, addComponents, addBase, theme }) => {
-         /**
-          * Container max-width for SM screen = 100%
-          */
+      /**
+       * COLOR THEME
+       */
+      colorTheme({
+         light: {
+            primary: 'steelblue',
+            'base-100': 'white',
+            'base-content': 'hsl(207 12% 35%)',
+            'base-content-focus': 'hsl(207 16% 15%)',
+         },
+         darkGold: {
+            primary: 'gold',
+            'base-100': 'hsl(182 100% 17%)',
+            'base-content': '#c2cdd0',
+            'base-content-focus': 'hsl(174 100% 98%)',
+         },
+         darkTurquoise: {
+            primary: 'hsl(174 75% 65%)',
+            'base-100': '#001515',
+            'base-content': '#c2cdd0',
+            'base-content-focus': 'hsl(174 100% 98%)',
+         },
+      }),
+
+      /**
+       * BTN COMPONENTS
+       */
+      plugin(({ addComponents, theme }) => {
+         const buttonBase = {
+            borderRadius: theme('borderRadius.DEFAULT'),
+            padding: `${theme('spacing[2.5]')} ${theme('spacing[5]')}`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 100ms',
+            fontWeight: 500,
+            paddingLeft: '1.5125rem',
+            paddingRight: '1.5125rem',
+            height: '3.25rem',
+            fontSize: '0.875rem',
+            '&:active': {
+               transform: 'scale(0.975)',
+               transformOrigin: 'center',
+            },
+         };
+
+         const buttonContained = {
+            ...buttonBase,
+            padding: `calc(2px + ${theme('spacing[2.5]')}) calc(2px + ${theme(
+               'spacing[5]',
+            )})`,
+            backgroundColor: theme('colors.primary'),
+            color: 'white',
+            '&:hover': {
+               opacity: '0.75',
+            },
+         };
+
+         const buttonOutlined = {
+            ...buttonBase,
+            color: theme('colors.primary'),
+            border: '1px solid currentColor',
+            backgroundColor: '#88888800',
+            '&:hover': {
+               backgroundColor: '#88888820',
+            },
+         };
+
+         addComponents({
+            '.btn': buttonBase,
+            '.btn-contained': buttonContained,
+            '.btn-outlined': buttonOutlined,
+         });
+      }),
+
+      /**
+       * CONTAINER SM FIX
+       */
+      plugin(({ addComponents, theme }) => {
          addComponents({
             [`@media (min-width: ${theme('screens.xs')}) and (max-width: ${
                pixelToNumber(theme('screens.sm')) - 0.1
@@ -124,10 +141,12 @@ module.exports = {
                },
             },
          });
+      }),
 
-         /**
-          * Animations
-          */
+      /**
+       * ANIMATIONS
+       */
+      plugin(({ addUtilities, addBase }) => {
          addBase({
             '@keyframes slide-in-bottom': {
                from: {

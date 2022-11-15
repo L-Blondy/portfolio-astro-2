@@ -27,7 +27,7 @@ const plugin = require('tailwindcss/plugin');
  * @param {Record<string, Record<string,string>>} config
  * @returns {void}
  */
-export function colorTheme(config = {}) {
+module.exports = function colorTheme(config = {}) {
    const themeConfig = reduce(
       config,
       (themeConfig, values, themeName) => {
@@ -58,7 +58,7 @@ export function colorTheme(config = {}) {
       // extend the colors config
       { theme: { colors: themeConfig.colors } },
    );
-}
+};
 
 function computeColorValue(variableName) {
    return ({ opacityVariable, opacityValue }) => {

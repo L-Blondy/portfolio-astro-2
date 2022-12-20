@@ -1,5 +1,5 @@
 /* cSpell:disable */
-const colorTheme = require('./src/lib/colorTheme.cjs');
+const { createThemes } = require('tw-colors');
 const plugin = require('tailwindcss/plugin');
 
 function pixelToNumber(pixelValue) {
@@ -53,29 +53,26 @@ module.exports = {
       },
    },
    plugins: [
-      /**
-       * COLOR THEME
-       */
-      colorTheme({
-         light: {
+      createThemes(({ light, dark }) => ({
+         light: light({
             primary: 'steelblue',
             'base-100': 'white',
             'base-content': 'hsl(207 12% 35%)',
             'base-content-focus': 'hsl(207 16% 15%)',
-         },
-         darkGold: {
+         }),
+         darkGold: dark({
             primary: 'gold',
             'base-100': 'hsl(182 100% 17%)',
             'base-content': '#c2cdd0',
             'base-content-focus': 'hsl(174 100% 98%)',
-         },
-         darkTurquoise: {
+         }),
+         darkTurquoise: dark({
             primary: 'hsl(174 75% 65%)',
             'base-100': '#001515',
             'base-content': '#c2cdd0',
             'base-content-focus': 'hsl(174 100% 98%)',
-         },
-      }),
+         }),
+      })),
 
       /**
        * BTN COMPONENTS
@@ -104,7 +101,7 @@ module.exports = {
             padding: `calc(2px + ${theme('spacing[2.5]')}) calc(2px + ${theme(
                'spacing[5]',
             )})`,
-            backgroundColor: theme('colors.primary'),
+            backgroundColor: 'hsl(var(--twc-primary))',
             color: 'white',
             '&:hover': {
                opacity: '0.75',
@@ -113,7 +110,7 @@ module.exports = {
 
          const buttonOutlined = {
             ...buttonBase,
-            color: theme('colors.primary'),
+            color: 'hsl(var(--twc-primary))',
             border: '1px solid currentColor',
             backgroundColor: '#88888800',
             '&:hover': {

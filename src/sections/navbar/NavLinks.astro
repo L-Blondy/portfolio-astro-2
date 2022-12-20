@@ -1,8 +1,11 @@
 ---
+import { HTMLAttributes } from 'astro/types';
 import { SECTION_ID } from '../const';
+
+export interface Props extends HTMLAttributes<'ul'> {}
 ---
 
-<ul>
+<ul {...Astro.props}>
    <li><a href={`#${SECTION_ID.EXPERIENCE}`}>Experience</a></li>
    <li><a href={`#${SECTION_ID.PROJECTS}`}>Projects</a></li>
    <li><a href={`#${SECTION_ID.CONTACT}`}>Contact</a></li>
@@ -11,18 +14,15 @@ import { SECTION_ID } from '../const';
 <style>
    ul {
       counter-reset: navlink;
-      @apply flex;
+      @apply flex text-sm;
    }
 
    li {
-      @apply flex 
-			items-center;
+      @apply flex items-center;
    }
 
    a {
-      @apply text-sm 
-			ml-6
-			py-2
+      @apply p-2.5
 			hover:text-primary
 			font-medium
 			transition-colors;

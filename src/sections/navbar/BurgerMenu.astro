@@ -57,8 +57,10 @@ const { class: className = '', ...props } = Astro.props;
       fixed
       inset-0
       bg-black/30
+      pointer-events-none
       opacity-0
       peer-focus-within:opacity-100
+      peer-focus-within:pointer-events-auto
       transition-opacity
       duration-500
    `}

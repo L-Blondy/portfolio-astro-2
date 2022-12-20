@@ -1,0 +1,38 @@
+---
+import { SECTION_ID } from '../const';
+---
+
+<ul>
+   <li><a href={`#${SECTION_ID.EXPERIENCE}`}>Experience</a></li>
+   <li><a href={`#${SECTION_ID.PROJECTS}`}>Projects</a></li>
+   <li><a href={`#${SECTION_ID.CONTACT}`}>Contact</a></li>
+</ul>
+
+<style>
+   ul {
+      counter-reset: navlink;
+      @apply flex;
+   }
+
+   li {
+      @apply flex 
+			items-center;
+   }
+
+   a {
+      @apply text-sm 
+			ml-6
+			py-2
+			hover:text-primary
+			font-medium
+			transition-colors;
+   }
+
+   a::before {
+      counter-increment: navlink;
+      content: '0' counter(navlink) '.';
+      @apply font-mono
+			text-primary 
+			pr-1;
+   }
+</style>

@@ -1,12 +1,14 @@
 ---
+import NavLinks from './NavLinks.astro';
 import SwitchTheme from './SwitchTheme.astro';
 ---
 
 <nav class="absolute top-0 left-0 right-0">
-   <div class="container grid grid-cols-2 items-center h-16">
-      <div class="justify-self-start">Nav</div>
-      <div class="justify-self-end">
+   <div class="container flex justify-between items-center h-16">
+      <div>Nav</div>
+      <div class="flex items-center">
          <SwitchTheme class="text-base-content" />
+         <NavLinks />
       </div>
    </div>
 </nav>

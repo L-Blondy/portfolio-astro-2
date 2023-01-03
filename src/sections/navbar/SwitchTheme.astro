@@ -6,7 +6,7 @@ import IconSun from 'src/icons/IconSun.astro';
 export interface Props extends HTMLAttributes<'label'> {}
 ---
 
-<label {...Astro.props}>
+<label onmousedown="event.preventDefault()" {...Astro.props}>
    <input
       name="theme"
       id="theme"
@@ -40,6 +40,13 @@ export interface Props extends HTMLAttributes<'label'> {}
          cursor-pointer
          m-1;
       box-shadow: 0 0 0 4.5px currentColor;
+   }
+
+   label::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      cursor: pointer;
    }
 
    .icon-dark,

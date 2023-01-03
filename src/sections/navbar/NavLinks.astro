@@ -9,6 +9,15 @@ export interface Props extends HTMLAttributes<'ul'> {}
    <li><a href={`#${SECTION_ID.EXPERIENCE}`}>Experience</a></li>
    <li><a href={`#${SECTION_ID.PROJECTS}`}>Projects</a></li>
    <li><a href={`#${SECTION_ID.CONTACT}`}>Contact</a></li>
+   <a
+      class="btn-outlined sm:px-4 sm:py-0 sm:h-10 ml-3 inherit"
+      href="public/curriculum-laurent_blondy-ENG.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      hreflang="en"
+   >
+      Resume
+   </a>
 </ul>
 
 <style>
@@ -22,13 +31,20 @@ export interface Props extends HTMLAttributes<'ul'> {}
    }
 
    a {
-      @apply p-2.5
+      font-size: inherit !important;
+   }
+
+   li a {
+      @apply px-3
+         h-10
+         flex
+         items-center
 			hover:text-primary
 			font-medium
 			transition-colors;
    }
 
-   a::before {
+   li a::before {
       counter-increment: navlink;
       content: '0' counter(navlink) '.';
       @apply font-mono

@@ -2,8 +2,14 @@
 import { SECTION_ID } from '../const';
 import SectionAnimated from '../SectionAnimated.astro';
 import SectionHeader from '../SectionHeader.astro';
+import Tab from './Tab.astro';
+import TabGroup from './TabGroup.astro';
 ---
 
 <SectionAnimated id={SECTION_ID.EXPERIENCE}>
    <SectionHeader>Where I've worked</SectionHeader>
+   <TabGroup>
+      <Tab title="Cenozai" active>Cenozai content</Tab>
+      <Tab title="Commit SRL">Commit content</Tab>
+   </TabGroup>
 </SectionAnimated>

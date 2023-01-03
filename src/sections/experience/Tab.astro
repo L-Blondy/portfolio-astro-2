@@ -1,0 +1,43 @@
+---
+import Portal from 'src/lib/Portal.astro';
+import { TABPANEL_ID } from './const';
+
+export interface Props {
+   title: string;
+   active?: boolean;
+}
+const { title, active = false } = Astro.props;
+
+const inputId = `input-id-${title}`;
+const contentId = `content-id-${title}`;
+---
+
+<input
+   type="radio"
+   name="company"
+   id={inputId}
+   value={title}
+   checked={active}
+   hidden
+/>
+
+<label for={inputId} role="tab">{title}</label>
+
+<Portal rootId={TABPANEL_ID}>
+   <div id={contentId} style={`display:${active ? 'flex' : 'none'}`}>
+      <slot />
+   </div>
+</Portal>
+
+<script define:vars={{ inputId, contentId, TABPANEL_ID }}>
+   document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById(inputId);
+      const panel = document.getElementById(TABPANEL_ID);
+      if (!input) return;
+      input.addEventListener('change', () => {
+         [...panel.children].forEach((child) => {
+            child.style.display = child.id === contentId ? 'flex' : 'none';
+         });
+      });
+   });
+</script>

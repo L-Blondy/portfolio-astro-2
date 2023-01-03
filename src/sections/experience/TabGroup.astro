@@ -1,0 +1,22 @@
+---
+import { TABPANEL_ID } from './const';
+---
+
+<div class="tabgroup">
+   <ul role="tablist"><slot /></ul>
+   <div role="tabpanel" id={TABPANEL_ID}></div>
+</div>
+
+<style>
+   .tabgroup {
+      @apply flex;
+   }
+
+   ul[role='tablist'] {
+      @apply flex flex-col;
+   }
+
+   div[role='tabpanel'] {
+      @apply flex-grow;
+   }
+</style>

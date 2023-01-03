@@ -1,0 +1,25 @@
+---
+export interface Props {
+   rootId?: string;
+}
+
+const innerHTML = await Astro.slots.render('default');
+
+const { rootId } = Astro.props;
+---
+
+<script define:vars={{ innerHTML, rootId }}>
+   document.addEventListener('DOMContentLoaded', () => {
+      const rootElement = rootId
+         ? document.getElementById(rootId) || createFallbackRoot()
+         : createFallbackRoot();
+      rootElement.innerHTML += innerHTML;
+   });
+   function createFallbackRoot() {
+      const rootElement = document.createElement('div');
+      rootElement.dataset.portal = true;
+      rootElement.id = rootId;
+      document.body.appendChild(rootElement);
+      return rootElement;
+   }
+</script>

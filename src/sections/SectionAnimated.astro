@@ -1,5 +1,6 @@
 ---
 import { HTMLAttributes } from 'astro/types';
+import { cn } from 'src/utils';
 import { SECTION_ID } from './const';
 
 export interface Props extends HTMLAttributes<'section'> {
@@ -9,7 +10,12 @@ export interface Props extends HTMLAttributes<'section'> {
 
 <section
    {...Astro.props}
-   class={`container opacity-0 animation-duration-1000 ${Astro.props.class}`}
+   class={cn`
+      container
+      opacity-0
+      animation-duration-1000
+      ${Astro.props.class}
+   `}
    on-visible="this.classList.add('animate-slide-in-bottom')"
    off-visible="this.classList.remove('animate-slide-in-bottom')"
    on-visible-root-margin="200px 0px -200px 0px"

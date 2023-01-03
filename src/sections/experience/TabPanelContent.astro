@@ -1,0 +1,29 @@
+---
+export interface Props {
+   position: string;
+   company: string;
+   websiteUrl: string;
+   from: string;
+   to: string;
+}
+
+const { position, company, websiteUrl, from, to } = Astro.props;
+---
+
+<div>
+   <h2 class="text-xl mb-1.5 font-medium">
+      <span class="inline-block">{position}</span>
+      <a
+         href={websiteUrl}
+         target="_blank"
+         rel="noopener noreferrer"
+         class="inline-block text-primary"
+      >
+         @ {company}
+      </a>
+   </h2>
+
+   <div class="font-mono text-sm mb-4">{from} - {to}</div>
+
+   <slot />
+</div>

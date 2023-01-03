@@ -9,14 +9,14 @@ import { TABPANEL_ID } from './const';
 
 <style>
    .tabgroup {
-      @apply flex;
+      @apply flex flex-col md:flex-row;
    }
 
    ul[role='tablist'] {
-      @apply flex flex-col;
+      @apply flex md:flex-col;
    }
 
    div[role='tabpanel'] {
-      @apply flex-grow;
+      @apply flex-grow px-1 pt-8 md:pl-8 md:py-2;
    }
 </style>

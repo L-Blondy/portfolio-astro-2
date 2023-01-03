@@ -4,12 +4,34 @@ import SectionAnimated from '../SectionAnimated.astro';
 import SectionHeader from '../SectionHeader.astro';
 import Tab from './Tab.astro';
 import TabGroup from './TabGroup.astro';
+import TabPanelContent from './TabPanelContent.astro';
 ---
 
 <SectionAnimated id={SECTION_ID.EXPERIENCE}>
    <SectionHeader>Where I've worked</SectionHeader>
    <TabGroup>
-      <Tab title="Cenozai" active>Cenozai content</Tab>
-      <Tab title="Commit SRL">Commit content</Tab>
+      <Tab title="Commit" active>
+         <TabPanelContent
+            position="Senior Frontend Engineer"
+            company="Commit"
+            websiteUrl="https://www.commitsoftware.it/"
+            from="October 2021"
+            to="Present"
+         >
+            Commit content
+         </TabPanelContent>
+      </Tab>
+
+      <Tab title="Cenozai">
+         <TabPanelContent
+            position="Frontend Engineer"
+            company="Cenozai"
+            websiteUrl="https://cenozai.io/"
+            from="October 2019"
+            to="October 2021"
+         >
+            Cenozai content
+         </TabPanelContent>
+      </Tab>
    </TabGroup>
 </SectionAnimated>

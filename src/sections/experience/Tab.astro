@@ -21,7 +21,7 @@ const contentId = `content-id-${title}`;
    hidden
 />
 
-<label for={inputId} role="tab">{title}</label>
+<label for={inputId} role="tab"><span>{title}</span></label>
 
 <Portal rootId={TABPANEL_ID}>
    <div id={contentId} style={`display:${active ? 'flex' : 'none'}`}>
@@ -41,3 +41,38 @@ const contentId = `content-id-${title}`;
       });
    });
 </script>
+
+<style>
+   label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      user-select: none;
+      transition: background 200ms, color 300ms;
+      @apply font-mono text-sm relative;
+   }
+
+   label span {
+      @apply px-6 sm:px-8 md:pl-4 md:pr-6 py-2.5;
+   }
+
+   label::before {
+      content: '';
+      position: absolute;
+      @apply bg-base-content/20 left-0 top-full right-0 h-[2px] md:top-0 md:bottom-0 md:h-full md:w-[3px];
+      transition: background 300ms;
+   }
+
+   input:checked + label::before {
+      @apply bg-primary;
+   }
+
+   input:checked + label,
+   label:hover {
+      @apply bg-primary/5 text-primary;
+   }
+
+   input:checked + label {
+      @apply font-medium;
+   }
+</style>

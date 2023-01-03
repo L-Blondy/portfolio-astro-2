@@ -53,7 +53,7 @@ const contentId = `content-id-${title}`;
    }
 
    label span {
-      @apply px-6 sm:px-8 md:pl-4 md:pr-6 py-2.5;
+      @apply px-6 sm:px-8 md:pl-6 md:pr-8 py-2.5;
    }
 
    label::before {
@@ -65,6 +65,7 @@ const contentId = `content-id-${title}`;
 
    input:checked + label::before {
       @apply bg-primary;
+      border-radius: 2px;
    }
 
    input:checked + label,

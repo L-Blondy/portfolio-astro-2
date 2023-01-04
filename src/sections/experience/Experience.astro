@@ -2,6 +2,7 @@
 import { SECTION_ID } from '../const';
 import SectionAnimated from '../SectionAnimated.astro';
 import SectionHeader from '../SectionHeader.astro';
+import Li from './Li.astro';
 import Tab from './Tab.astro';
 import TabGroup from './TabGroup.astro';
 import TabPanelContent from './TabPanelContent.astro';
@@ -18,7 +19,21 @@ import TabPanelContent from './TabPanelContent.astro';
             from="October 2021"
             to="Present"
          >
-            Commit content
+            <ul>
+               <Li>
+                  Developed and redesigned the web version of Ascom's inventory
+                  management desktop application, gradually replacing it in 450
+                  hospitals across 15 countries.
+               </Li>
+               <Li>
+                  Rebuilt Stentle's "Just Commerce" CMS platform with full user
+                  experience redesign to release the beta version in 4 months.
+               </Li>
+               <Li>
+                  Introduced E2E testing with Cypress to reliably test the
+                  products in a production environment.
+               </Li>
+            </ul>
          </TabPanelContent>
       </Tab>
 
@@ -30,7 +45,25 @@ import TabPanelContent from './TabPanelContent.astro';
             from="October 2019"
             to="October 2021"
          >
-            Cenozai content
+            <ul>
+               <Li>
+                  Partnered with ML engineers to develop the React-Typescript
+                  based front-end for a data extraction and conversion engine,
+                  leading to a $1.7M revenue.
+               </Li>
+               <Li>
+                  Facilitated adoption of test-driven development, reducing
+                  monthly bug reports by 270%.
+               </Li>
+               <Li
+                  >Prototyped and Implemented an average of 30 new features per
+                  year.
+               </Li>
+               <Li>
+                  Optimized and redesigned the official website, increasing the
+                  traffic by 46% and the clickthrough rate by 85%.
+               </Li>
+            </ul>
          </TabPanelContent>
       </Tab>
    </TabGroup>

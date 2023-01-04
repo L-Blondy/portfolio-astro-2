@@ -1,0 +1,17 @@
+---
+import { HTMLAttributes } from 'astro/types';
+import IconSmallTriangle from 'src/icons/IconSmallTriangle.astro';
+
+export interface Props extends HTMLAttributes<'li'> {}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<li {...props} class={`relative pl-7 mb-3 leading-[22px] ${className}`}>
+   <IconSmallTriangle
+      width={10}
+      stroke-width={2}
+      class="absolute h-6 left-0 top-0 text-primary"
+   />
+   <slot />
+</li>

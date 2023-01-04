@@ -1,0 +1,22 @@
+---
+import { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'svg'> {}
+console.log(Astro.props);
+---
+
+<svg
+   width={Astro.props.width ?? 10}
+   height={Astro.props.height ?? 10}
+   viewBox="0 0 16 16"
+   fill="none"
+   xmlns="http://www.w3.org/2000/svg"
+   stroke-width={Astro.props['stroke-width'] ?? 2}
+   {...Astro.props}
+>
+   <path
+      d="M12.3699 8.42875L3.25725 13.8964C2.92399 14.0963 2.5 13.8563 2.5 13.4676L2.5 2.53238C2.5 2.14373 2.92399 1.90368 3.25725 2.10363L12.3699 7.57125C12.6936 7.76546 12.6936 8.23454 12.3699 8.42875Z"
+      stroke="currentColor"
+   >
+   </path>
+</svg>

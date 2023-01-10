@@ -4278,10 +4278,10 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-tw-colors@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/tw-colors/-/tw-colors-1.0.1.tgz#6977e4ff59c5cf1163285962b105e80a78c7b4b4"
-  integrity sha512-VtchjMOS01QDLYYfKGqsQ4kH4Ww1/nFx+G3+Q1+U9iNVY4ikXt80COdUgrePOg3hbMIdXUP9xKwCZsEYHC9gfw==
+tw-colors@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tw-colors/-/tw-colors-1.0.2.tgz#fd93b0890f1703e507f2794569f1cf4817a5a4fa"
+  integrity sha512-xlvuB+CcxBYeneDmxAbYPYjfEBSj+CfKW6gRa6RXyyVsjfornkCygRFALEVodUxd76Qb6ObLMpek66PE3t+X4A==
   dependencies:
     color "^4.2.3"
     lodash.foreach "^4.5.0"

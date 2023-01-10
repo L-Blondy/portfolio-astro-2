@@ -94,6 +94,11 @@ module.exports = {
                transform: 'scale(0.975)',
                transformOrigin: 'center',
             },
+            '&:hover': {
+               backgroundColor: 'hsl(var(--twc-primary) / 0.1)',
+               color: 'hsl(var(--twc-primary))',
+               borderColor: 'hsl(var(--twc-primary))',
+            },
          };
 
          const buttonContained = {
@@ -101,7 +106,7 @@ module.exports = {
             padding: `calc(2px + ${theme('spacing[2.5]')}) calc(2px + ${theme(
                'spacing[5]',
             )})`,
-            backgroundColor: 'hsl(var(--twc-primary))',
+            background: 'hsl(var(--twc-primary))',
             color: 'white',
             '&:hover': {
                opacity: '0.75',
@@ -112,10 +117,7 @@ module.exports = {
             ...buttonBase,
             color: 'hsl(var(--twc-primary))',
             border: '1px solid currentColor',
-            backgroundColor: '#88888800',
-            '&:hover': {
-               backgroundColor: '#88888820',
-            },
+            backgroundColor: 'hsl(var(--twc-primary) / 0)',
          };
 
          addComponents({
